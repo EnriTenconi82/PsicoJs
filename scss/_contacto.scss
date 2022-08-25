@@ -1,0 +1,75 @@
+/* CSS contacto.html */
+    
+.ownForm{
+    max-width: 820px;
+}
+
+
+.formBlock{ 
+    min-width: 10rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content:flex-start;
+    
+}
+/* CSS radio positioning*/
+
+.labelRadio,label{
+    display: inline-block;
+    width: 14rem;
+    vertical-align:top;
+    font-weight: $bold;
+    font-style: $titleFont;
+}
+
+
+.radioLabelSub{
+    width: 6rem;
+    font-weight:$normal;
+}
+
+
+form {
+    .item{
+        background: none;
+        vertical-align: middle;
+        outline: none;
+        border-radius: 0.5rem;
+        border-color:map-get($map: $formTheme, $key:borderColor );
+    }
+
+    input{
+        @extend .item;
+        border: none;
+        border-bottom: 2px solid map-get($map: $formTheme, $key:borderColor );
+
+        &:focus{
+            border-bottom: 2px solid map-get($map: $formTheme, $key:focusColor );
+        }
+        select {
+            font-size: $smFont;
+            background-color: map-get($map: $formTheme, $key:fillColor);
+            option{
+                background-color: map-get($map: $formTheme, $key:fillColor);
+            }
+            
+        }
+    }
+    
+    .item-button{
+        @extend .item;
+        margin-top: 1rem;
+        margin-left: 3rem;
+        background-color: map-get($map: $formTheme, $key:butBgCol);
+        text-transform: uppercase;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        &:hover{
+            background-color: map-get($map: $formTheme, $key:butBgHover);
+        }
+    }
+
+    .buttonBlock{
+        text-align: left;
+    }
+}

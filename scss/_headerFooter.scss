@@ -1,0 +1,35 @@
+/* HEAD FOOTER BARS CSS*/
+
+.headerTitle{
+    font-size: $xxlFont;
+}
+
+.footerSection{
+    padding:1rem 1rem 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    ul li{
+        display: inline-block;
+        padding: 0 1.5rem 0 1rem;
+        font-size: $smFont;
+    }
+    img{
+        vertical-align: middle;
+    }
+    
+
+}
+
+/* images sizes positionings global*/
+.logo{
+    height: 9rem;
+    padding: 1rem;
+}
+
+.iconImg{
+    height:25px;
+    width: 25px;
+}

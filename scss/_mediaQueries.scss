@@ -1,0 +1,25 @@
+
+/*media queries*/
+@media only screen and (max-width: 767px){
+
+body{
+    background-image: $bgImageSm;
+    }
+}
+
+@media only screen and (max-width: 350px){
+    
+    .imgProceso{
+        width: 100%;
+        border-radius: 1.5rem;
+    }
+    
+    .footerSection{
+        ul{
+            li{
+                font-size: $xxsFont;    
+            }
+        
+        }
+    }  
+}

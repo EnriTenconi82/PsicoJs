@@ -1,0 +1,111 @@
+/* COMMONS */
+
+
+* { 
+    font-family: $fontFamily;
+    margin: 0 ;
+    padding:0;
+    box-sizing: border-box;
+    color: $fontColor;
+
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+        scrollbar-width: 3px;
+        scrollbar-color: $black $blacky;
+    /* Chrome, Edge, and Safari */
+        &::-webkit-scrollbar {
+            width: 7px;
+    }
+        &::-webkit-scrollbar-track {
+        background: $blacky;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $black;
+        border-radius: 5px;
+        border: 1px groove $white;
+    }
+}
+
+html {
+    font-size:62.5%;
+    font-weight: $normal;
+}
+
+body{
+    background-image: $bgImage;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
+    display: flex;
+    flex-flow:column;
+    align-items: stretch;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+ol, ul {
+    list-style: none; 
+    
+}
+
+/* globals classes  */
+
+.articleBg{
+    background-color:$articleBg;
+    border-radius: $globalRadius;
+}
+
+.cardBg{
+    background-color: $cardBgColor;
+}
+
+
+.ownCard {
+    padding: 2rem;
+    row-gap: 2rem;
+    column-gap: 4rem;
+    border-radius: $globalRadius;
+    width: 100%;
+    max-width: 1440px;
+}
+
+
+article{
+    font-size: $mdFont;
+    line-height: 3rem;
+}
+
+
+//titles 
+
+@mixin text($fontFam,$font-size,$weight,$align){
+    font-family: $fontFam;
+    font-size:$font-size;
+    font-weight:$weight;
+    text-align: $align;
+}
+
+/* titles h1 ...h4*/
+
+h1{ 
+    @include text( $titleFont,$mdFont,$bold,$textCenter);
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+}
+
+h2{
+    @include text($titleFont,$xlFont,$bold,$textCenter);
+}
+
+h3{
+    @include text($titleFont,$lFont,$bold,$textCenter);
+}
+
+h4 {
+    @include text($titleFont,$xxsFont,$bold,$textLeft);
+        
+}

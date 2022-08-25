@@ -1,0 +1,9 @@
+Para el desafio Seo se aplicaron los siguientes pasos
+
+-Control y correción de alt en imgagenes
+-Control y correcion de H1 H2 H3 
+-Agregado de metas en head
+-Cambio en etiquetas y correciones para dejar limpio el codigo (Validado en https://validator.w3.org/)
+-Compilacion CSS desde SASS y purga de CCS con PURGECSS.
+
+Gracias

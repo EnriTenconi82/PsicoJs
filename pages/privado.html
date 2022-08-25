@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactanos - Terapia psicologica on line y presencial en pesos, para hispanohablantes en el mundo desde Rosario Santa Fe Argentina">
+    <meta name="keywords" content="contacto,mail,psicologos,terapia,psicologa, online, barato ,terapia, pesos, argentina, español">
+    <meta name="author" content="Enrico Tenconi">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/minStyles.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.ico" sizes="64x64">
+    <title>Psicólogos On Line Rosario - Reservado</title>
+</head>
+<body>
+
+    <header class="text-center barsBg">
+        <h1> Gestion Mensajes</h1>
+    </header>
+    
+<!-- nav bar bootstrap-->
+    <nav class="navbar navbar-expand-md barsBg sticky-top">
+        <div class="container-fluid traspBg align-items-end">
+            
+            <a href="../index.html"> <img class="logo" src="../img/logo.svg" alt="logo Psicologos Rosario"></a>
+        
+        </div>
+    </nav>
+<!--End nav-->
+    
+    <main>
+    
+        <article class="articleBg container-md pt-4 py-4  mb-4 px-0 px-sm-4">
+
+        <h2>Ingreso</h2>
+<!--Form-->
+        <form class="wow animate__zoomIn" action="private.php" method="post">
+<!--Frist form block -->            
+            <fieldset class="cardBg ownCard mb-4 text-start">
+                <legend>Datos Personales</legend>
+    <!--bootstrap row-->                    
+                    <div class="row justify-content-start g-4">
+                    
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="user">Usuario </label >
+                                <input type="text" id="user"    placeholder="User" required>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="passw">Contraseña</label>
+                                <input type="password" id="passw" placeholder="Contraseña" required>
+                            </div>
+                        </div>
+                    
+                        
+            </fieldset>
+<!--buttons block-->        
+            <div class="buttonBlock">
+                <input class="item-button" type="Submit" id="submit">
+                <button class="item-button" type="reset" value="Reset">Borrar</button>
+            </div>     
+        
+        </form> 
+        <!--form temporaneo se creeara con Js al entrar con contraseña de admin-->        
+        <form> 
+            <button class="item-button" onclick="muestraMensNuevos()">Lee nuevo(s) mensaje(s) </button>
+            <button class="item-button" onclick="muestraMensViejos()">Lee mensaje(s) viejo(s)</button>
+            
+        </form>
+        
+        </article>
+    
+
+    
+</main>
+<!--footer section-->    
+    
+<!--WOW & Bootstrap JS-->
+    <script src="../js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../js/lectura.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+//VARIABLES
+
+$containerColor:rgba(10, 10, 10, 0.8);
+$white:rgb(254, 254, 254);
+$black:rgb(8, 8, 8);
+$blacky:rgb(52, 52, 52); //for scrollbar bg
+$fontColor:$white; //text color
+$cardBgColor: #f4a2e731;     //.cardBg
+$textCenter:center;
+$textLeft:left;
+$articleBg:#2b1549f4;        //.articleBg
+$globalRadius:2rem;
+$accordActive:#c3c4ba;  
+$figureBgColor:#1b0d2df4;  //(gallery) .figBenefits
+$bgImage: url(../img/rosarioMain.webp); 
+$bgImageSm:url(../img/rosarioMainSm.webp);
+
+
+
+//bars and nav theme .barsBg
+$barsTheme:(
+    'fontColor':$fontColor,
+    'buttonBg':rgb(90, 72, 124),
+    'buttonHoverBg':#7a6c95,
+    'barsBgColor':linear-gradient(90deg, rgba(23,13,42,1) 1%, rgba(75,37,146,1) 50%, rgba(23,13,42,1) 99%),
+    'taspBg':rgba(0, 0, 0, 0) //trasp bg nav
+    );
+
+
+//form theme
+$formTheme:('butBgCol':rgb(90, 72, 124),
+            'butBgHover':#7a6c95,
+            'focusColor':$white,
+            'fillColor': #571a4d,      
+            'borderColor': #f4a2e731,
+            );
+//
+

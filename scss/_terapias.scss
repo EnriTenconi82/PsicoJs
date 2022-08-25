@@ -1,0 +1,13 @@
+/* bootstrap acordion tuning terapias.html*/
+.accordH3{
+    @extend h3;
+    padding: 2rem 0 2rem 0;
+    color: $fontColor;
+
+}
+
+.accordion-button{
+    &:not(.collapsed){
+        color:$accordActive;
+    }
+}

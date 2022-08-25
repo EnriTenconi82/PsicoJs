@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactanos - Terapia psicologica on line y presencial en pesos, para hispanohablantes en el mundo desde Rosario Santa Fe Argentina">
+    <meta name="keywords" content="contacto,mail,psicologos,terapia,psicologa, online, barato ,terapia, pesos, argentina, español">
+    <meta name="author" content="Enrico Tenconi">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/minStyles.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.ico" sizes="64x64">
+    <title>Psicólogos On Line Rosario - Contacto</title>
+</head>
+<body>
+
+    <header class="text-center barsBg">
+        <h1> Formulario de contacto</h1>
+    </header>
+    
+<!-- nav bar bootstrap-->
+    <nav class="navbar navbar-expand-md barsBg sticky-top">
+        <div class="container-fluid traspBg align-items-end">
+            
+            <a href="../index.html"> <img class="logo" src="../img/logo.svg" alt="logo Psicologos Rosario"></a>
+        
+            <button class="navbar-toggler ownNavBarButton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link"  href="../pages/terapias.html">Sobre la terapia</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link"  href="../pages/servicios.html">Servicio y tarifas</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link" href="../pages/equipo.html">Equipo</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link" href="../pages/contacto.html">Contacto</a>
+                        </li>    
+    
+                    </ul>
+            </div>
+        </div>
+    </nav>
+<!--End nav-->
+    
+    <main>
+    
+        <article class="articleBg container-md pt-4 py-4  mb-4 px-0 px-sm-4">
+
+        <h2>Contáctanos</h2>
+<!--Form-->
+        <form class="wow animate__zoomIn">
+<!--Frist form block -->            
+            <fieldset class="cardBg ownCard mb-4 text-start">
+                <legend>Datos Personales</legend>
+    <!--bootstrap row-->                    
+                    <div class="row justify-content-start g-4">
+                    
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="nombre">Nombre </label >
+                                <input type="text" id="nombre"    placeholder="Nombre" required>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" id="apellido" placeholder="Apellido" required>
+                            </div>
+                        </div>
+                    
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="celular">Celular</label>
+                                <input type="text" id="celular" placeholder="0341123456" required>  
+                            </div>  
+                        </div>
+        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="mail">Mail</label>
+                                <input type="email" id="mail" placeholder="example@example.com" required>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label  for="obrasocial">Obra social</label>
+                                <select class="cardBg" name="obrasocial" id="obrasocial" required>
+                                    <option value="">Seleccione</option>
+                                    <option value="galeno">Galeno</option>
+                                    <option value="osde">Osde</option>
+                                    <option value="pami">Pami</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+            </fieldset>
+<!-- form 2nd block-->
+
+            <fieldset class="cardBg ownCard text-start">
+
+                <legend>Datos de consulta</legend>
+
+    <!--bootstrap row-->
+                    <div class="row justify-content-start g-4">
+                        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <span class="labelRadio">Tipo de consulta</span>
+                                
+                                    <div class="d-inline-block">
+                                        <div>
+                                            <input type="radio"  required id="virtual" name="consulta" value="virtual">
+                                            <label class="radioLabelSub" for="virtual">Virtual</label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio"  required id="presencial" name="consulta" value="presencial">
+                                            <label class="radioLabelSub" for="presencial">Presencial</label>
+                                        </div>    
+                                    </div>
+                            </div>                
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="modalidadrespuesta">Modalidad de Respuesta</label>
+                                    <select class="cardBg" name="modalidadrespuesta" id="modalidadrespuesta" required>
+                                        <option value="">Seleccione</option>
+                                        <option value="mail">Mail</option>
+                                        <option value="whatsapp">Whatsapp</option>
+                                        <option value="llamada">Llamada</option>
+                                    </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="formBlock">
+                                <label for="mensaje">Deje su mensaje</label>
+                                <textarea class="item" placeholder="Escriba su mensaje" name="mensaje" id="mensaje" cols="20" rows="10"></textarea>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+            </fieldset>
+<!--buttons block-->        
+            <div class="buttonBlock">
+                <!--<input class="item-button" type="Submit" id="submit"-->
+                <button class="item-button" onclick=nuevoMensajeClick()>Envio</button>
+                <button class="item-button" type="reset" value="Reset"> Borrar</button>
+            </div>     
+        
+        </form> 
+        
+    </article>
+    
+</main>
+<!--footer section-->    
+    <footer class="footerSection barsBg flex justify-content-end">
+            <ul>
+                <li>Visítanos:</li>
+                <li><a href="../pages/404.html"><img class="iconImg" src="../img/fb.png" alt="facebook"></a></li>
+                <li><a href="../pages/404.html"><img class="iconImg" src="../img/ig.png" alt="instragram"></a></li>
+            </ul>
+            <ul>
+                <li>Area Privada:</li>
+                <li><a href="../pages/privado.html"><img class="iconImg" src="../img/candado.svg" alt="candado"></a></li>
+            </ul>
+    </footer>
+<!--WOW & Bootstrap JS-->
+    <script src="../js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../js/contacto.js"></script>
+
+
+</body>
+</html>

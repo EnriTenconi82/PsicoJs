@@ -1,0 +1,15 @@
+/* inicio bootstrap*/
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+/* fin bootstrap inicio css propio*/
+@import "_vars.scss";
+@import "_fonts.scss";
+@import "_commons.scss";
+@import "_headerFooter";
+@import "_navBar.scss";
+@import "_indexServicios.scss";
+@import "_terapias.scss";
+@import "_equipo.scss";
+@import "_contacto.scss";
+@import "_mediaQueries.scss";
+@import "_keyframes.scss";

@@ -1,0 +1,42 @@
+/* Bootstrap Nav tuning */
+
+.nav-item{
+    margin-right: 2rem;
+}
+.nav-link{
+    color:map-get($map:$barsTheme , $key:fontColor);
+    font-size:$mdFont;
+    &:hover{
+        background-color: map-get($map:$barsTheme , $key:buttonBg);
+        transition: 0.2s;
+    }
+    
+}
+.navbar-toggler{
+    border: 1px thin transparent;
+    &:focus{
+        box-shadow: 0 0 0 0.15rem;
+    }
+
+}
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+//container trasp. bg
+.traspBg{
+    background-color:map-get($map:$barsTheme , $key:traspBg);
+
+}
+.ownNavBarButton{
+    background-color:map-get($map:$barsTheme , $key:buttonHoverBg);
+    border:0;
+    
+}
+
+
+.barsBg{
+    background:map-get($map:$barsTheme , $key:barsBgColor);
+}
+
+
