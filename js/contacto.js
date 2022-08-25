@@ -81,21 +81,22 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         function nuevoMensajeClick()
         {
             //ingreso y checkeo datos
-        nombre=document.getElementById("nombre").value
-        apellido=document.getElementById("apellido").value
+        nombre=document.getElementById("nombre").value.toUpperCase()
+        apellido=document.getElementById("apellido").value.toUpperCase()
         celular=document.getElementById("celular").value
-        mail=document.getElementById("mail").value
-        obrasocial=document.getElementById("obrasocial").value
-        modResp=document.getElementById("modalidadrespuesta").value
-        consulta=document.querySelector('input[name=consulta]:checked').value
-        mens=document.getElementById("mensaje").value
+        mail=document.getElementById("mail").value.toUpperCase()
+        obrasocial=document.getElementById("obrasocial").value.toUpperCase()
+        modResp=document.getElementById("modalidadrespuesta").value.toUpperCase()
+        consulta=document.querySelector('input[name=consulta]:checked').value.toUpperCase()
+            mens=document.getElementById("mensaje").value.toUpperCase()
         leido=false;
         if(mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
     
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido)
             console.log(mensajeAgregado) //check en consola ok ingreso
             console.log(mensajes)
-        //push a array de mensaje
+
+            //push a array de mensaje
             mensajes.push(mensajeAgregado)
         //check
             console.log(mensajes.length)

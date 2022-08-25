@@ -5,7 +5,6 @@ https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
 
 
-
 //array de objeto simulandos mensajes recibidos si la SessionStorage no esta creada.
 let mensajes=[]
 
@@ -15,22 +14,22 @@ if (sessionStorage['SimularServMensajes']) {
 
 else if(!sessionStorage['SimularServMensajes']){
         //si no tengo ya unos datos creados de la sessios uso ese array de obj
-    mensajes=[{"nombre":"Tito", 
-            "apellido":"Titovich",
+    mensajes=[{"nombre":"TITO", 
+            "apellido":"TITOVICH",
             "celular":"341234566",                
-            "mail":"tito@hotmail.com",
-            "obrasocial":"otro", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"presencial",//(0:Virtual 1:Presencial)
-            "modResp":"virtual", //(0:Mail 1:Whatsupp 2:Llamada)
+            "mail":"TITO@HOTMAIL.COM",
+            "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+            "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
+            "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
             "mens":"hola quisiera comunicarme para un turno gracias.",
             "leido":true},//true mensaje viejo (leido)
-            {"nombre":"Romina",
-            "apellido":"Cabello",
+            {"nombre":"ROMINA",
+            "apellido":"CABELLO",
             "celular":"341234566",                
-            "mail":"ro_cabe@hotmail.com",
-            "obrasocial":"galeno", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"virtual",//(0:Virtual 1:Presencial)
-            "modResp":"mail", //(0:Mail 1:Whatsupp 2:Llamada)
+            "mail":"ROOO_CABE@AOL.COM",
+            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
             "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
             "leido": false}]//true mensaje viejo (leido)
 }
@@ -38,22 +37,25 @@ else if(!sessionStorage['SimularServMensajes']){
 //fin creacion array mensajes
 
 //funcion de lectura (//false=muestrame nuevos (no leidos) true =muestrame leidos)
-function showMessages(arrayIn,esLeido){ 
+function showMessages(arrayIn,esLeido,apellido,nombre){ 
     let texto=""
     let mensMonstrados=[]
     let noMessage=true //variable control (tengo o no mensaje del genero establecido)
     
     if (esLeido) {texto=" viejo(s)."} 
-        else texto=" nuevo(s)" 
+        else if(!esLeido){texto=" nuevo(s)"} 
     
-    alert('Se mostraran  mensajes '+ texto +' para leer.')
+    if(nombre.length>0||apellido.length>0){texto=` de ${nombre} ${apellido}`}
+    alert(`Se mostraran  mensajes ${texto} para leer.`)
     
-    //filtro a array los mensajes que cumplen condicion
-    mensMonstrados=arrayIn.filter(function(mensajeALeer)
-        {
-        return mensajeALeer.leido===esLeido
-        }
-    )
+    //filtro a array los mensajes que cumplen condicion (busqueda leido)
+    if (typeof esLeido === 'boolean'){
+        mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.leido===esLeido)
+    }else if (apellido.length>0)
+    {        
+        if(nombre.length>0)  mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.nombre===nombre&&mensajeALeer.apellido===apellido)
+        else {mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.apellido===apellido)}
+    }
     
     console.log(mensMonstrados) //console check!
         
@@ -74,11 +76,21 @@ function showMessages(arrayIn,esLeido){
     }
         
     if (noMessage) alert('Sin mensajes '+ texto +' para leer') //si no tengo mensaje de este tipo aviso
- //   return idsNew;
+
 } 
-//funcion para leer  vienjos mensajes(boton)
+
+//funcion apellido
+function muestraMensApellido(){
+    showMessages(mensajes,"","TITOVICH",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+}
+//funcion apellido y nombres
+function muestraMensApellidoNombre(){
+    showMessages(mensajes,"","CABELLO","ROMINA"); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+
+}
+//funcion para leer  vienjs mensajes(boton)
 function muestraMensViejos(){
-    showMessages(mensajes,true); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    showMessages(mensajes,true,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
 }
 
@@ -87,7 +99,7 @@ function muestraMensNuevos(){
     let temp;
     let validator=false;
     
-    showMessages(mensajes,false); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    showMessages(mensajes,false,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
     
     //marco como leidos los mensajes nuevos?
@@ -110,3 +122,4 @@ function muestraMensNuevos(){
 }
 
 
+ 
