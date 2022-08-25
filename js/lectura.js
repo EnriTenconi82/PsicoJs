@@ -81,11 +81,18 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
 
 //funcion apellido
 function muestraMensApellido(){
-    showMessages(mensajes,"","TITOVICH",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    let apellidoIn=prompt("Interte apellido ej titovich")
+    apellidoIn=apellidoIn.toUpperCase()
+    showMessages(mensajes,"",apellidoIn,""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 }
 //funcion apellido y nombres
 function muestraMensApellidoNombre(){
-    showMessages(mensajes,"","CABELLO","ROMINA"); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    let apellidoIn=prompt("Interte apellido ej cabello")
+    apellidoIn=apellidoIn.toUpperCase()
+    let nombreIn=prompt("Interte nombre ej. romina")
+    apellidoIn=apellidoIn.toUpperCase()
+    nombreIn=nombreIn.toUpperCase()
+    showMessages(mensajes,"",apellidoIn,nombreIn); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
 }
 //funcion para leer  vienjs mensajes(boton)
