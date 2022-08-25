@@ -33,7 +33,6 @@ else if(!sessionStorage['SimularServMensajes']){
             "modResp":"mail", //(0:Mail 1:Whatsupp 2:Llamada)
             "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
             "leido": false}]//true mensaje viejo (leido)
-        alert("notengo")
 }
 
 //fin creacion array mensajes
