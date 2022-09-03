@@ -125,7 +125,6 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         function nuevoMensajeClick(e)
         {
-        e.preventDefault()
             //ingreso y checkeo datos
         nombre=document.getElementById("nombre").value.toUpperCase()
         apellido=document.getElementById("apellido").value.toUpperCase()
@@ -152,10 +151,15 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             console.log(mensajes[0])
             console.log(mensajes[1])
             console.log(mensajes[2])
-        }
-        else {alert("Campos Insertados erroneos")}
+
+            //simulo subida al servidor nuevo mensaje
+            sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
         
-        //simulo subida al servidor nuevo mensaje
-        sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+        }
+        else {alert("Campos Insertados erroneos")
+                e.preventDefault()
+        
+        }
+        
         
     }
