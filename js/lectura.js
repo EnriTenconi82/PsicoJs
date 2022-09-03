@@ -67,12 +67,19 @@ else if(!sessionStorage['SimularServMensajes']){
 
 //fin creacion array mensajes
 
+//definicion eventos de botones ya visibles
+let privateForm=document.getElementById("privateForm")
+privateForm.addEventListener("submit",privateZone)
+
+
+
 //funcion de lectura (//false=muestrame nuevos (no leidos) true =muestrame leidos)
 function showMessages(arrayIn,esLeido,apellido,nombre){ 
 
     let texto=""
     let mensMonstrados=[]
     let noMessage=true //variable control (tengo o no mensaje del genero establecido)
+    
     //ELIMINO ARTICLE DE MENSAJE MOSTRADOS SI EXISTE
     if (document.getElementById("articleCar"))
     {   let padre = document.getElementById("articleCar").parentNode;
@@ -138,7 +145,8 @@ function muestraMensNuevos(){
 
 //funcion BOTON INGRESO A CHECK ZONA PRIVADA
 
-function privateZone(){
+function privateZone(e){
+    e.preventDefault
     let inpUser=document.getElementById("user").value
     let inpPass=document.getElementById("passw").value
 
@@ -179,19 +187,27 @@ function divCreator(){
             
                 <div class="col-sm-6">
                     <div class="formBlock">
-                        <button class="item-button" onclick="muestraMensApellidoNombre()">Buscar</button>
+                        <button class="item-button" id="findSurname">Buscar</button>
                     </div>  
                 </div>
         </fieldset>    
     </form>
     
     <form onsubmit="return false">
-        <button class="item-button" onclick="muestraMensNuevos()">Mensaje(s) Nuevo(s) </button>
+        <button class="item-button" id="findNew">Mensaje(s) Nuevo(s) </button>
     
-        <button class="item-button" onclick="muestraMensViejos()">Mensaje(s) Archivado(s)</button>
+        <button class="item-button" id="findOld">Mensaje(s) Archivado(s)</button>
     </form>
 
 </article>`
+//botones creados defino funciones
+    let findSurname=document.getElementById("findSurname")
+    let findNew=document.getElementById("findNew")
+    let findOld=document.getElementById("findOld")
+    findNew.addEventListener("click", muestraMensNuevos)
+    findSurname.addEventListener("click",muestraMensApellidoNombre)
+    findOld.addEventListener("click",muestraMensViejos)
+
 }
 
 //funcion DE CRECION HTML (IMPRESION MENSAJES EN PANTALLAS)    
@@ -413,6 +429,8 @@ function messArtCreator(printMess){
 }
 
 //FUNCION BOTON CAMBIO DE ESTADO NUEVO--->LEIDO 
+//LLAMADA DESDE HTML CREADO->            nodeCarrInn.innerHTML
+
 function statusChange(i)
 {
     let statusChange=document.getElementById(`readSlot${i}`).innerText

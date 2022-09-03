@@ -92,6 +92,10 @@ class nuevoMensaje{
                     this.id=id
                 }
     }
+//submit de form
+let miForm=document.getElementById("formContacto")
+miForm.addEventListener ("submit", nuevoMensajeClick);
+    
 
 
 //control valor numerico u texto de prompt
@@ -119,8 +123,9 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             return (false)
     } 
 
-        function nuevoMensajeClick()
+        function nuevoMensajeClick(e)
         {
+        e.preventDefault()
             //ingreso y checkeo datos
         nombre=document.getElementById("nombre").value.toUpperCase()
         apellido=document.getElementById("apellido").value.toUpperCase()
@@ -134,12 +139,13 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         let fecha=new Date()
         fecha=fecha.toLocaleDateString() 
         let id=mensajes.length 
-
+            
         if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
             console.log(mensajeAgregado) //check en consola ok ingreso
             console.log(mensajes)
             //push a array de mensaje
+            alert("Mensaje Enviado!")
             mensajes.push(mensajeAgregado)
         //check
             console.log(mensajes.length)
