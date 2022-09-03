@@ -8100,3 +8100,22 @@ form .buttonBlock {
     transform: translateY(0.7); }
   100% {
     transform: translateY(0.9); } }
+
+
+    .carousel-control-prev{
+      justify-content: flex-start;
+    }
+    .carousel-control-next{
+      justify-content: flex-end;
+      
+    }
+
+    div.formBlock >p{
+      width: 13rem;
+      font-size: 1.5rem;
+    }
+
+    .readSlotC:hover{
+      cursor: pointer;
+      font-weight: bolder;
+    }

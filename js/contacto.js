@@ -1,4 +1,4 @@
-
+console.dir(document)
 
 /*archivos de mensaje campos tomados de pagina web
 simulando mensajes intersatos en pagina
@@ -16,24 +16,28 @@ if (sessionStorage['SimularServMensajes']) {
 
 else if(!sessionStorage['SimularServMensajes']){
         //si no tengo ya unos datos creados de la sessios uso ese array de obj
-    mensajes=[{"nombre":"Tito", 
-            "apellido":"Titovich",
+        mensajes=[{"nombre":"TITO", 
+            "apellido":"TITOVICH",
             "celular":"341234566",                
-            "mail":"tito@hotmail.com",
-            "obrasocial":"otro", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"presencial",//(0:Virtual 1:Presencial)
-            "modResp":"virtual", //(0:Mail 1:Whatsupp 2:Llamada)
+            "mail":"TITO@HOTMAIL.COM",
+            "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+            "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
+            "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
             "mens":"hola quisiera comunicarme para un turno gracias.",
-            "leido":true},//true mensaje viejo (leido)
-            {"nombre":"Romina",
-            "apellido":"Cabello",
+            "leido":true,//true mensaje viejo (leido)
+            "fecha":"31/08/2022",
+            "id":0},
+            {"nombre":"ROMINA",
+            "apellido":"CABELLO",
             "celular":"341234566",                
-            "mail":"ro_cabe@hotmail.com",
-            "obrasocial":"galeno", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"virtual",//(0:Virtual 1:Presencial)
-            "modResp":"mail", //(0:Mail 1:Whatsupp 2:Llamada)
+            "mail":"ROOO_CABE@AOL.COM",
+            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
             "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-            "leido": false}]//true mensaje viejo (leido)
+            "leido": true,//true mensaje viejo (leido),
+            "fecha":"31/08/2022",
+            "id":1}]
 }
 
 
@@ -48,7 +52,9 @@ class nuevoMensaje{
                 consulta,//(0:Virtual 1:Presencial)
                 modResp, //(0:Mail 1:Whatsupp 2:Llamada)
                 mens,
-                leido)//true mensaje viejo (leido)
+                leido,
+                fecha,
+                id)//true mensaje viejo (leido)
                 {
                     this.nombre=nombre
                     this.apellido=apellido
@@ -59,6 +65,8 @@ class nuevoMensaje{
                     this.modResp=modResp
                     this.mens=mens
                     this.leido=leido
+                    this.fecha=fecha
+                    this.id=id
                 }
     }
 
@@ -77,7 +85,17 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             return validator;
     }
 //funcion para creacion de nuevos mensajes (boton)
-        
+        //mail check funcion
+        function validarEmail(mail) 
+    {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+        {
+            return (true)
+        }
+            alert("Mail Invalido!")
+            return (false)
+    } 
+
         function nuevoMensajeClick()
         {
             //ingreso y checkeo datos
@@ -88,14 +106,16 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         obrasocial=document.getElementById("obrasocial").value.toUpperCase()
         modResp=document.getElementById("modalidadrespuesta").value.toUpperCase()
         consulta=document.querySelector('input[name=consulta]:checked').value.toUpperCase()
-            mens=document.getElementById("mensaje").value.toUpperCase()
+        mens=document.getElementById("mensaje").value.toUpperCase()
         leido=false;
-        if(mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
-    
-            const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido)
+        let fecha=new Date()
+        fecha=fecha.toLocaleDateString() 
+        let id=mensajes.length 
+
+        if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
+            const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
             console.log(mensajeAgregado) //check en consola ok ingreso
             console.log(mensajes)
-
             //push a array de mensaje
             mensajes.push(mensajeAgregado)
         //check
