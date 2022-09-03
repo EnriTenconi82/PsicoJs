@@ -17,27 +17,50 @@ if (sessionStorage['SimularServMensajes']) {
 else if(!sessionStorage['SimularServMensajes']){
         //si no tengo ya unos datos creados de la sessios uso ese array de obj
         mensajes=[{"nombre":"TITO", 
-            "apellido":"TITOVICH",
-            "celular":"341234566",                
-            "mail":"TITO@HOTMAIL.COM",
-            "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
-            "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola quisiera comunicarme para un turno gracias.",
-            "leido":true,//true mensaje viejo (leido)
-            "fecha":"31/08/2022",
-            "id":0},
-            {"nombre":"ROMINA",
-            "apellido":"CABELLO",
-            "celular":"341234566",                
-            "mail":"ROOO_CABE@AOL.COM",
-            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-            "leido": true,//true mensaje viejo (leido),
-            "fecha":"31/08/2022",
-            "id":1}]
+        "apellido":"TITOVICH",
+        "celular":"341234566",                
+        "mail":"TITO@HOTMAIL.COM",
+        "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
+        "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola quisiera comunicarme para un turno gracias.",
+        "leido":true,//true mensaje viejo (leido)
+        "fecha":"31/08/2022",
+        "id":0},
+        {"nombre":"ROMINA",
+        "apellido":"CABELLO",
+        "celular":"341234566",                
+        "mail":"ROOO_CABE@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": true,//true mensaje viejo (leido),
+        "fecha":"31/08/2022",
+        "id":1},
+        {"nombre":"TANO",
+        "apellido":"ORTIZ",
+        "celular":"341234566",                
+        "mail":"TANO@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": false,//true mensaje viejo (leido),
+        "fecha":"31/08/2022",
+        "id":2},
+        {"nombre":"ROBERTO",
+        "apellido":"DIEGUEZ",
+        "celular":"34123226",                
+        "mail":"TANO@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": true,//true mensaje viejo (leido),
+        "fecha":"01/09/2022",
+        "id":3}
+    ]
 }
 
 
