@@ -4,7 +4,6 @@
 simulando mensajes intersatos en pagina
 https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
-//const { functionsIn } = require("lodash")
 //user y password de zona privada
 var user = "nemuadmin";
 var password = "nemuuser"; //array de objeto simulandos mensajes recibidos si la SessionStorage no esta creada.
@@ -27,10 +26,10 @@ if (sessionStorage['SimularServMensajes']) {
     "modResp": "VIRTUAL",
     //(0:Mail 1:Whatsupp 2:Llamada)
     "mens": "hola quisiera comunicarme para un turno gracias.",
-    "leido": false,
+    "leido": true,
     //true mensaje viejo (leido)
     "fecha": "31/08/2022",
-    "id": 6
+    "id": 0
   }, {
     "nombre": "ROMINA",
     "apellido": "CABELLO",
@@ -46,7 +45,7 @@ if (sessionStorage['SimularServMensajes']) {
     "leido": true,
     //true mensaje viejo (leido),
     "fecha": "31/08/2022",
-    "id": 4
+    "id": 1
   }, {
     "nombre": "TANO",
     "apellido": "ORTIZ",
@@ -115,7 +114,6 @@ function showMessages(arrayIn, esLeido, apellido, nombre) {
     mensMonstrados = arrayIn.filter(function (mensajeALeer) {
       return mensajeALeer.leido === esLeido;
     });
-    console.log(mensMonstrados);
   } else if (apellido.length > 0) {
     if (nombre.length > 0) mensMonstrados = arrayIn.filter(function (mensajeALeer) {
       return mensajeALeer.nombre.includes(nombre) && mensajeALeer.apellido.includes(apellido);
@@ -233,20 +231,9 @@ function statusChange(i) {
   var idChange = document.getElementById("idSlot".concat(i)).innerHTML;
 
   if (statusChange == "nuevo") {
-    //real id corresponde a index del menaje con el id de pantalla
-    var realId = realIdF(idChange).findIndex(function (array) {
-      return array == idChange;
-    });
-    mensajes[realId].leido = true;
+    alert("El mensaje pasará a estado: leido");
+    mensajes[idChange].leido = true;
     document.getElementById("readSlot".concat(i)).innerHTML = "leido";
     sessionStorage.setItem("SimularServMensajes", JSON.stringify(mensajes));
   }
-} //mapeo mensajes a id
-
-
-function realIdF(id) {
-  var idArray = mensajes.map(function (men) {
-    return men.id;
-  });
-  return idArray;
 }

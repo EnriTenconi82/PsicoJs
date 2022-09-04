@@ -27,10 +27,10 @@ if (sessionStorage['SimularServMensajes']) {
     "modResp": "VIRTUAL",
     //(0:Mail 1:Whatsupp 2:Llamada)
     "mens": "hola quisiera comunicarme para un turno gracias.",
-    "leido": true,
+    "leido": false,
     //true mensaje viejo (leido)
     "fecha": "31/08/2022",
-    "id": 0
+    "id": 6
   }, {
     "nombre": "ROMINA",
     "apellido": "CABELLO",
@@ -46,7 +46,7 @@ if (sessionStorage['SimularServMensajes']) {
     "leido": true,
     //true mensaje viejo (leido),
     "fecha": "31/08/2022",
-    "id": 1
+    "id": 4
   }, {
     "nombre": "TANO",
     "apellido": "ORTIZ",
@@ -148,7 +148,13 @@ function nuevoMensajeClick(e) {
   leido = false;
   var fecha = new Date();
   fecha = fecha.toLocaleDateString();
-  var id = mensajes.length;
+  var id = 0;
+
+  if (mensajes.length > 0) {
+    id = Math.max.apply(null, mensajes.map(function (men) {
+      return men.id;
+    })) + 1;
+  }
 
   if (validarEmail(mail) && mensFieldsInput(nombre, false) && mensFieldsInput(apellido, false) && mensFieldsInput(celular, true) && mensFieldsInput(mail, false) && mensFieldsInput(obrasocial, false) && mensFieldsInput(modResp, false) && mensFieldsInput(consulta, false) && mensFieldsInput(mens, false)) {
     var mensajeAgregado = new nuevoMensaje(nombre, apellido, celular, mail, obrasocial, consulta, modResp, mens, leido, fecha, id);
@@ -157,12 +163,7 @@ function nuevoMensajeClick(e) {
     console.log(mensajes); //push a array de mensaje
 
     alert("Mensaje Enviado!");
-    mensajes.push(mensajeAgregado); //check
-
-    console.log(mensajes.length);
-    console.log(mensajes[0]);
-    console.log(mensajes[1]);
-    console.log(mensajes[2]); //simulo subida al servidor nuevo mensaje
+    mensajes.push(mensajeAgregado); //simulo subida al servidor nuevo mensaje
 
     sessionStorage.setItem("SimularServMensajes", JSON.stringify(mensajes));
   } else {

@@ -4,6 +4,8 @@ simulando mensajes intersatos en pagina
 https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
 
+//const { functionsIn } = require("lodash")
+
 
 //user y password de zona privada
 const user="nemuadmin"
@@ -17,52 +19,52 @@ if (sessionStorage['SimularServMensajes']) {
 }
 
 else if(!sessionStorage['SimularServMensajes']){
-        //si no tengo ya unos datos creados de la sessios uso ese array de obj
-    mensajes=[{"nombre":"TITO", 
-            "apellido":"TITOVICH",
-            "celular":"341234566",                
-            "mail":"TITO@HOTMAIL.COM",
-            "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
-            "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola quisiera comunicarme para un turno gracias.",
-            "leido":true,//true mensaje viejo (leido)
-            "fecha":"31/08/2022",
-            "id":0},
-            {"nombre":"ROMINA",
-            "apellido":"CABELLO",
-            "celular":"341234566",                
-            "mail":"ROOO_CABE@AOL.COM",
-            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-            "leido": true,//true mensaje viejo (leido),
-            "fecha":"31/08/2022",
-            "id":1},
-            {"nombre":"TANO",
-            "apellido":"ORTIZ",
-            "celular":"341234566",                
-            "mail":"TANO@AOL.COM",
-            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-            "leido": false,//true mensaje viejo (leido),
-            "fecha":"31/08/2022",
-            "id":2},
-            {"nombre":"ROBERTO",
-            "apellido":"DIEGUEZ",
-            "celular":"34123226",                
-            "mail":"TANO@AOL.COM",
-            "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-            "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-            "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-            "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-            "leido": true,//true mensaje viejo (leido),
-            "fecha":"01/09/2022",
-            "id":3}
-        ]
+    //si no tengo ya unos datos creados de la sessios uso ese array de obj
+mensajes=[{"nombre":"TITO", 
+        "apellido":"TITOVICH",
+        "celular":"341234566",                
+        "mail":"TITO@HOTMAIL.COM",
+        "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
+        "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola quisiera comunicarme para un turno gracias.",
+        "leido":false,//true mensaje viejo (leido)
+        "fecha":"31/08/2022",
+        "id":6},
+        {"nombre":"ROMINA",
+        "apellido":"CABELLO",
+        "celular":"341234566",                
+        "mail":"ROOO_CABE@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": true,//true mensaje viejo (leido),
+        "fecha":"31/08/2022",
+        "id":4},
+        {"nombre":"TANO",
+        "apellido":"ORTIZ",
+        "celular":"341234566",                
+        "mail":"TANO@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": false,//true mensaje viejo (leido),
+        "fecha":"31/08/2022",
+        "id":2},
+        {"nombre":"ROBERTO",
+        "apellido":"DIEGUEZ",
+        "celular":"34123226",                
+        "mail":"TANO@AOL.COM",
+        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
+        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
+        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
+        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
+        "leido": true,//true mensaje viejo (leido),
+        "fecha":"01/09/2022",
+        "id":3}
+    ]
 }
 
 //fin creacion array mensajes
@@ -70,7 +72,6 @@ else if(!sessionStorage['SimularServMensajes']){
 //definicion eventos de botones ya visibles
 let privateForm=document.getElementById("privateForm")
 privateForm.addEventListener("submit",privateZone)
-
 
 
 //funcion de lectura (//false=muestrame nuevos (no leidos) true =muestrame leidos)
@@ -95,8 +96,8 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
     
     //filtro a array los mensajes que cumplen condicion (busqueda leido)
     if (typeof esLeido === 'boolean'){
-        mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.  
-                leido===esLeido)
+        mensMonstrados=arrayIn.filter((mensajeALeer=>mensajeALeer.leido===esLeido))
+        console.log(mensMonstrados)
     }else if (apellido.length>0)
         {        
             if(nombre.length>0)  mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.nombre.includes(nombre)&&mensajeALeer.apellido.includes(apellido))
@@ -436,10 +437,18 @@ function statusChange(i)
     let statusChange=document.getElementById(`readSlot${i}`).innerText
     let idChange=document.getElementById(`idSlot${i}`).innerHTML
     if (statusChange=="nuevo") {
-        alert("El mensaje pasará a estado: leido")
-        mensajes[idChange].leido=true
+        //real id corresponde a index del menaje con el id de pantalla
+        let realId=realIdF(idChange).findIndex(array => array == idChange);
+    
+        mensajes[realId].leido=true
         document.getElementById(`readSlot${i}`).innerHTML="leido"
         sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
 
     }
+}
+//mapeo mensajes a id
+function realIdF(id)
+{
+    let idArray= mensajes.map(function(men) { return men.id; })
+    return idArray
 }
