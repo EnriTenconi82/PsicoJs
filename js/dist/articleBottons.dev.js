@@ -12,7 +12,7 @@ function privateZone(e) {
       divCreator();
     } else alert("Combinacion user password errada");
   }
-} //definicion eventos de botones ya visibles
+} //definicion eventos de botones ya visibles u creado
 
 
 var privateForm = document.getElementById("privateForm");
@@ -60,19 +60,10 @@ function statusChange(i) {
 
   if (statusChange == "nuevo") {
     //real id corresponde a index del menaje con el id de pantalla
-    //abro modal USO FUTURO MODAL CONFIRMACION DE OPERACION
-    //let modal=document.getElementById("staticBackdrop")
-    //modal.style.show=true
-    //
-    //var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'),"" )
-    // myModal.show();
-    // alert(myModal)
-    var realId = realIdF(idChange).findIndex(function (array) {
-      return array == idChange;
-    });
-    mensajes[realId].leido = true;
-    document.getElementById("readSlot".concat(i)).innerHTML = "leido";
-    sessionStorage.setItem("SimularServMensajes", JSON.stringify(mensajes));
+    var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+    myModal.show();
+    var botonsi = document.getElementById("caca");
+    botonsi.onclick = alert("hola");
   }
 } //mapeo mensajes a id
 

@@ -8115,7 +8115,42 @@ form .buttonBlock {
       font-size: 1.5rem;
     }
 
-    .readSlotC:hover{
+    .carrSpan:hover{
       cursor: pointer;
       font-weight: bolder;
+      color:red;
     }
+    .modal{
+      font-size: 1.5rem;
+    }
+
+    .modalBtnStyle {
+      margin-top: 1rem;
+      margin-left: 3rem;
+      background-color: #5a487c;
+      text-transform: uppercase;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem 0.5rem 1rem; }
+      
+    
+
+      .modal-footer{
+        border-radius:0 0 2rem 2rem;
+      }
+      .modal-header{  
+        border-radius: 2rem 2rem 0 0;
+      }
+
+.eraseButton{
+  vertical-align: middle;
+  outline: none;
+  border-radius: 0.5rem;
+  border-color: #f4a2e731; 
+  margin-top: 1rem;
+  margin-left: 3rem;
+  background-color: violet;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem 0.5rem 1rem; }
+.eraseButton:hover {
+  background-color: #7a6c95; 
+}

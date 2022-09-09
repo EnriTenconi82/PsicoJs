@@ -1,6 +1,7 @@
 //JS FUNCIONES DE LECTURA
 
 
+
 /*archivos de mensaje campos tomados de pagina web
 simulando mensajes intersatos en pagina
 https://enritenconi82.github.io/PsicologosOnLineFinal/
@@ -89,28 +90,28 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
         else if(!esLeido){texto=" nuevo(s)"} 
     
     if(nombre.length>0||apellido.length>0){texto=` de ${nombre} ${apellido}`}
-    alert(`Se mostraran  mensajes ${texto} para leer.`)
-    
-    //filtro a array los mensajes que cumplen condicion (busqueda leido)
-    if (typeof esLeido === 'boolean'){
-        mensMonstrados=arrayIn.filter((mensajeALeer=>mensajeALeer.leido===esLeido))
-        console.log(mensMonstrados)
-    }else if (apellido.length>0)
-        {        
-            if(nombre.length>0)  mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.nombre.includes(nombre)&&mensajeALeer.apellido.includes(apellido))
-            else {mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.apellido.includes(apellido))}
-        }
-    
-    console.log(mensMonstrados) //console check!
+    showModal(`Se mostraran  mensajes ${texto} para leer.`,"OK","","INFO",()=>{
+        //filtro a array los mensajes que cumplen condicion (busqueda leido)
         
-    //leos los mens y confirmo que si tengo de este tipo
-    if (mensMonstrados.length>0){
-        noMessage=false
-        messArtCreator(mensMonstrados)
-    }   
+        if (typeof esLeido === 'boolean'){
+            mensMonstrados=arrayIn.filter((mensajeALeer=>mensajeALeer.leido===esLeido))
+            console.log(mensMonstrados)
         
-    if (noMessage) alert('Sin mensajes '+ texto +' para leer') //si no tengo mensaje de este tipo aviso
-
+        }else if (apellido.length>0)
+            {        
+                if(nombre.length>0)  mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.nombre.includes(nombre)&&mensajeALeer.apellido.includes(apellido))
+                else {mensMonstrados=arrayIn.filter(mensajeALeer=>mensajeALeer.apellido.includes(apellido))}
+            }
+        
+        console.log(mensMonstrados) //console check!
+            
+        //leos los mens y confirmo que si tengo de este tipo
+        if (mensMonstrados.length>0){
+            noMessage=false
+            messArtCreator(mensMonstrados)
+        }   
+            
+        if (noMessage)  showModal(`Sin mostraran  mensajes ${texto} para leer.`,"OK","","INFO")
+         
+    })
 } 
-
-

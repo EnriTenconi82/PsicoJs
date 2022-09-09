@@ -119,7 +119,7 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         {
             return (true)
         }
-            alert("Mail Invalido!")
+        showModal(`MAIL INVALIDO!!!`,"OK","","ATENCIÓN!")
             return (false)
     } 
 
@@ -144,18 +144,19 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
-            console.log(mensajeAgregado) //check en consola ok ingreso
-            console.log(mensajes)
+       
+            
             //push a array de mensaje
-            alert("Mensaje Enviado!")
+            e.preventDefault()
             mensajes.push(mensajeAgregado)
-                    //simulo subida al servidor nuevo mensaje
+            //simulo subida al servidor nuevo mensaje
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+            showModal(`MENSAJE ENVIADO!`,"OK","","ATENCIÓN!",()=>{location.reload();})
+
         
         }
-        else {alert("Campos Insertados erroneos")
-                e.preventDefault()
-        
+        else {
+            showModal(`Campos Insertados erroneos`,"OK","","ATENCIÓN!")
         }
         
         

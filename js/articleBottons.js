@@ -17,7 +17,7 @@ function privateZone(e){
 }
 
 
-//definicion eventos de botones ya visibles
+//definicion eventos de botones ya visibles u creado
 let privateForm=document.getElementById("privateForm")
 privateForm.addEventListener("submit",privateZone)
 
@@ -58,20 +58,25 @@ function divCreator(){
         </fieldset>    
     </form>
     
-    <form onsubmit="return false">
-        <button class="item-button" id="findNew">Mensaje(s) Nuevo(s) </button>
+    <form onsubmit="return false" class="d-flex flex-wrap justify-content-between">
+        <div class="col-sm-6">
+            <button class="item-button" id="findNew">Mensaje(s) Nuevo(s) </button>
     
-        <button class="item-button" id="findOld">Mensaje(s) Archivado(s)</button>
-    </form>
+            <button class="item-button" id="findOld">Mensaje(s) Leido(s)</button>
+        </div>
+        
+        <button class="eraseButton" id="eraseOld">Eliminar Leido(s)</button>
+        </form>`
 
-</article>`
 //botones creados defino funciones
     let findSurname=document.getElementById("findSurname")
     let findNew=document.getElementById("findNew")
     let findOld=document.getElementById("findOld")
+    let eraseOldB=document.getElementById("eraseOld")
     findNew.addEventListener("click", muestraMensNuevos)
     findSurname.addEventListener("click",muestraMensApellidoNombre)
     findOld.addEventListener("click",muestraMensViejos)
+    eraseOldB.addEventListener("click",eraseOld)
 
 }
 
@@ -113,27 +118,21 @@ function statusChange(i)
     let statusChange=document.getElementById(`readSlot${i}`).innerText
     let idChange=document.getElementById(`idSlot${i}`).innerHTML
     if (statusChange=="nuevo") {
-        //real id corresponde a index del menaje con el id de pantalla
+        //real id corresponde a index del menaje con. el id de pantalla
+         //si en modal confirmo cambio estado a leido (modal.js)
+        
+        showModal("Estas seguro marcar el mensaje como leido?","SI","CANCELAR","ATENCION!!!",()=>{
 
-        //abro modal USO FUTURO MODAL CONFIRMACION DE OPERACION
-        //let modal=document.getElementById("staticBackdrop")
-        //modal.style.show=true
-        //
-        //var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'),"" )
-       // myModal.show();
-       // alert(myModal)
-        let realId=realIdF(idChange).findIndex(array => array == idChange);
+            let realId=realIdF(idChange).findIndex(array => array == idChange);
+            mensajes[realId].leido=true
+            document.getElementById(`readSlot${i}`).innerHTML="leido"
+            sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+            
+        })
+
     
-        mensajes[realId].leido=true
-        document.getElementById(`readSlot${i}`).innerHTML="leido"
-        sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-
     }
 }
 
-//mapeo mensajes a id
-function realIdF(id)
-{
-    let idArray= mensajes.map(function(men) { return men.id; })
-    return idArray
-}
+
+

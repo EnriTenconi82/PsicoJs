@@ -15,7 +15,7 @@ function messArtCreator(printMess){
     let h3=document.createElement("h3")
     h3.innerText="Mensaje(s)"
     formCarr.innerHTML=`<h3>Mensaje(s)</h3>  
-                        <div id="myCarousel" class="carousel">
+                        <div id="myCarousel" data-bs-interval="false" class="carousel">
 
                             <div class="carousel-indicators" id="carrInd">
                             </div>
@@ -60,7 +60,7 @@ function messArtCreator(printMess){
             itemDiv.setAttribute("class","carousel-item active")
             }
             else{
-                itemDiv.setAttribute("class","carousel-item ")
+                itemDiv.setAttribute("class","carousel-item")
             }
 
         
@@ -71,7 +71,8 @@ function messArtCreator(printMess){
                         <div class="formBlock justify-content-around">
                             <p>Mensaje: ${i+1} de ${printMess.length}. </p>
                             <p class="privPar"><span  class="fst-italic fw-bolder">Fecha: </span>${elemento.fecha}</p>
-                            <p class="privPar"onclick="statusChange(${i})">Estado: <span class="readSlotC" id="readSlot${i}">${printStatus}</span></p>
+                            <p class="privPar"onclick="statusChange(${i})">Estado: <span class="carrSpan" id="readSlot${i}">${printStatus}</span></p>
+                            <p class="deleteCarBTN" id="deleteCarrBTNId${i}" onclick="deleteMens(${i})"> Acción: <span class="carrSpan">ELIMINAR</span></p>
                             <p> Id: <span id="idSlot${i}">${elemento.id}</span></p>
                         </div>
                     </div>
@@ -147,3 +148,5 @@ function messArtCreator(printMess){
 })
 
 }
+
+
