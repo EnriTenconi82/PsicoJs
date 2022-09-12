@@ -8154,3 +8154,15 @@ form .buttonBlock {
 .eraseButton:hover {
   background-color: #7a6c95; 
 }
+
+.logout{
+  font-size: 1.5rem;
+  text-align: end;
+  padding: 0.5rem;
+
+}
+
+.logout:hover{
+  font-weight: bolder;
+  cursor: pointer;
+}

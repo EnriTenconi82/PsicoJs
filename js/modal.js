@@ -1,7 +1,7 @@
 //creacion modal bts 
 
 let showModal=(modalBody,yesLabel,noLabel,modalTitle,callback)=>{
-  
+
     if (document.getElementById("miModal"))//elimino modal si existe
     {   let padre = document.getElementById("miModal").parentNode;
 		padre.removeChild(document.getElementById("miModal"));

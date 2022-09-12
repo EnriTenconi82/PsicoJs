@@ -1,5 +1,15 @@
 //js de creacion de botones al ingresar a zona privada 
 
+if (sessionStorage['Logued']==="1234"){
+   divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
+}
+
+//user y password de zona privada
+let user=JSON.parse(sessionStorage.getItem("SimularServUser")).user
+let password=JSON.parse(sessionStorage.getItem("SimularServUser")).pass
+
+
+
 //funcion BOTON INGRESO A CHECK ZONA PRIVADA
 
 function privateZone(e){
@@ -9,7 +19,8 @@ function privateZone(e){
 
     if (inpUser.length>0 && inpPass.length>0)
         {if (inpUser===user && inpPass===password ){
-            divCreator()
+            sessionStorage.setItem('Logued',"1234") //creo token
+            divCreator()   
 
         }
         else alert("Combinacion user password errada")
@@ -17,11 +28,11 @@ function privateZone(e){
 }
 
 
-//definicion eventos de botones ya visibles u creado
+///definicion eventos de botones ya visibles u creado
+if (document.getElementById("privateForm")){
 let privateForm=document.getElementById("privateForm")
 privateForm.addEventListener("submit",privateZone)
-
-
+}
 
 
 //funcion CREADORA DIV DE BOTONERA DE LECTURA
@@ -29,9 +40,11 @@ privateForm.addEventListener("submit",privateZone)
 function divCreator(){
     //modifico mi div donde se encuentra el login  creando ahi mismo la botonera
     let logDiv=document.getElementById("logging")
-    logDiv.innerHTML=`        <form onsubmit="return false">
+    logDiv.innerHTML=`<form onsubmit="return false">
+    <p class="logout" id="exit">X</p>
     <fieldset class="cardBg ownCard mb-4 text-start">
         <legend>Busqueda por Apellido y Nombre</legend>
+
             <div class="row justify-content-start g-4">
                 
                 <div class="col-sm-6">
@@ -66,21 +79,31 @@ function divCreator(){
         </div>
         
         <button class="eraseButton" id="eraseOld">Eliminar Leido(s)</button>
+        
         </form>`
 
-//botones creados defino funciones
+//botones creados defino funcionalidades
     let findSurname=document.getElementById("findSurname")
     let findNew=document.getElementById("findNew")
     let findOld=document.getElementById("findOld")
     let eraseOldB=document.getElementById("eraseOld")
+    let exitB=document.getElementById("exit")
     findNew.addEventListener("click", muestraMensNuevos)
     findSurname.addEventListener("click",muestraMensApellidoNombre)
     findOld.addEventListener("click",muestraMensViejos)
     eraseOldB.addEventListener("click",eraseOld)
-
+    exitB.addEventListener("click",exit)
 }
 
+//funcion salida de zona privada
+function exit(){
+    showModal("Estas seguro de deslogearte?","SI","CANCELAR","ATENCION!!!",()=>{
+                 sessionStorage.setItem('Logued',"") //elimino token
+                 location.reload() //reinicio pagina
+            }
+    )
 
+}
 
 //funcion BOTON BUSQUEDA POR APELLIDO (Y NOMBRE)
 

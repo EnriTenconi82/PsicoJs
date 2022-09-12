@@ -6,63 +6,8 @@ https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
 
 
-
-//array de objeto simulandos mensajes recibidos si la SessionStorage no esta creada.
-let mensajes=[]
-
-if (sessionStorage['SimularServMensajes']) {
-    mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
-}
-
-else if(!sessionStorage['SimularServMensajes']){
-    //si no tengo ya unos datos creados de la sessios uso ese array de obj
-mensajes=[{"nombre":"TITO", 
-        "apellido":"TITOVICH",
-        "celular":"341234566",                
-        "mail":"TITO@HOTMAIL.COM",
-        "obrasocial":"OTRO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-        "consulta":"PRESENCIAL",//(0:Virtual 1:Presencial)
-        "modResp":"VIRTUAL", //(0:Mail 1:Whatsupp 2:Llamada)
-        "mens":"hola quisiera comunicarme para un turno gracias.",
-        "leido":false,//true mensaje viejo (leido)
-        "fecha":"31/08/2022",
-        "id":6},
-        {"nombre":"ROMINA",
-        "apellido":"CABELLO",
-        "celular":"341234566",                
-        "mail":"ROOO_CABE@AOL.COM",
-        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-        "leido": true,//true mensaje viejo (leido),
-        "fecha":"31/08/2022",
-        "id":4},
-        {"nombre":"TANO",
-        "apellido":"ORTIZ",
-        "celular":"341234566",                
-        "mail":"TANO@AOL.COM",
-        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-        "leido": false,//true mensaje viejo (leido),
-        "fecha":"31/08/2022",
-        "id":2},
-        {"nombre":"ROBERTO",
-        "apellido":"DIEGUEZ",
-        "celular":"34123226",                
-        "mail":"TANO@AOL.COM",
-        "obrasocial":"GALENO", //(0:Otro 1:Galeno 2:Pami 3:OSDE)
-        "consulta":"VIRTUAL",//(0:Virtual 1:Presencial)
-        "modResp":"MAIL", //(0:Mail 1:Whatsupp 2:Llamada)
-        "mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.",
-        "leido": true,//true mensaje viejo (leido),
-        "fecha":"01/09/2022",
-        "id":3}
-    ]
-}
-
+//creo array desde SessionStorage
+let mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
 
 //declaro plantilla mensaje
 
@@ -144,7 +89,7 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
-       
+    
             
             //push a array de mensaje
             e.preventDefault()
