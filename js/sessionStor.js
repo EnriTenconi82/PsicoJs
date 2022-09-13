@@ -7,4 +7,9 @@ if (!sessionStorage['SimularServMensajes']){
 //simulador usuario -- 
 
 if (!sessionStorage['SimularServUser']){
-    sessionStorage.setItem('SimularServUser',`{"user":"nemuadmin","pass":"nemuuser"}`)}
+    sessionStorage.setItem('SimularServUser',`{"user":"nemuadmin","pass":"nemuuser","adToken":"1234"}`)}
+
+if (!sessionStorage['logued']){
+    sessionStorage.setItem('logued',``)
+
+}

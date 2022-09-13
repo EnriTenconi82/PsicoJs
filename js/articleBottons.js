@@ -1,6 +1,8 @@
-//js de creacion de botones al ingresar a zona privada 
+// si el token (logued) es igual al token del usuario registrado muestro privado
+//usuario y matriz creado en sessionStor.js (simulacion servidor)
 
-if (sessionStorage['Logued']==="1234"){
+if (JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued"))
+{
    divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
 }
 
@@ -19,9 +21,9 @@ function privateZone(e){
 
     if (inpUser.length>0 && inpPass.length>0)
         {if (inpUser===user && inpPass===password ){
-            sessionStorage.setItem('Logued',"1234") //creo token
+            let logToken=JSON.parse(sessionStorage.getItem("SimularServUser")).adToken
+            sessionStorage.setItem('logued',logToken) //guardo token a usuario correspondiente en mi memoria
             divCreator()   
-
         }
         else alert("Combinacion user password errada")
     }
@@ -33,6 +35,18 @@ if (document.getElementById("privateForm")){
 let privateForm=document.getElementById("privateForm")
 privateForm.addEventListener("submit",privateZone)
 }
+
+
+//funcion salida de zona privada
+function exit(){
+    showModal("Estas seguro de deslogearte?","SI","CANCELAR","ATENCION!!!",()=>{
+                 sessionStorage.setItem('logued',"") //elimino token
+                 location.reload() //reinicio pagina
+            }
+    )
+
+}
+
 
 
 //funcion CREADORA DIV DE BOTONERA DE LECTURA
@@ -93,16 +107,6 @@ function divCreator(){
     findOld.addEventListener("click",muestraMensViejos)
     eraseOldB.addEventListener("click",eraseOld)
     exitB.addEventListener("click",exit)
-}
-
-//funcion salida de zona privada
-function exit(){
-    showModal("Estas seguro de deslogearte?","SI","CANCELAR","ATENCION!!!",()=>{
-                 sessionStorage.setItem('Logued',"") //elimino token
-                 location.reload() //reinicio pagina
-            }
-    )
-
 }
 
 //funcion BOTON BUSQUEDA POR APELLIDO (Y NOMBRE)
