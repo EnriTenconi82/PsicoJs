@@ -1,10 +1,8 @@
 // si el token (logued) es igual al token del usuario registrado muestro privado
 //usuario y matriz creado en sessionStor.js (simulacion servidor)
 
-if (JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued"))
-{
-   divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
-}
+JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued") && divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
+
 
 //user y password de zona privada
 let user=JSON.parse(sessionStorage.getItem("SimularServUser")).user
@@ -105,7 +103,7 @@ function divCreator(){
     findNew.addEventListener("click", muestraMensNuevos)
     findSurname.addEventListener("click",muestraMensApellidoNombre)
     findOld.addEventListener("click",muestraMensViejos)
-    eraseOldB.addEventListener("click",eraseOld)
+    eraseOldB.addEventListener("click",eraseOldFunc)
     exitB.addEventListener("click",exit)
 }
 
@@ -116,9 +114,11 @@ function muestraMensApellidoNombre(){
     apellidoIn=apellidoIn.toUpperCase()
     
     let nombreIn=document.getElementById("nombre").value.toUpperCase()
-    if (nombreIn.length>0) nombreIn=nombreIn.toUpperCase()
-    if (apellidoIn.length>0)
-    showMessages(mensajes,"",apellidoIn,nombreIn); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    
+    
+    nombreIn.length>0 && nombreIn.toUpperCase()
+    
+    apellidoIn.length>0 && showMessages(mensajes,"",apellidoIn,nombreIn); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
 }
 
@@ -133,7 +133,7 @@ function muestraMensViejos(){
 function muestraMensNuevos(){
     let temp;
     let validator=false;
-   showMessages(mensajes,false,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+    showMessages(mensajes,false,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
 }
 

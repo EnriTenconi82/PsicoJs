@@ -89,10 +89,9 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
-    
-            
-            //push a array de mensaje
             e.preventDefault()
+
+            //push a array de mensaje
             mensajes.push(mensajeAgregado)
             //simulo subida al servidor nuevo mensaje
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
@@ -101,6 +100,7 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         
         }
         else {
+            e.preventDefault()
             showModal(`Campos Insertados erroneos`,"OK","","ATENCIÓN!")
         }
         

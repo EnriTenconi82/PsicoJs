@@ -47,7 +47,7 @@ function messArtCreator(printMess){
     printMess.forEach((elemento,i)=>{
         let printStatus="leido"
     
-        if (elemento.leido==false) {printStatus="nuevo"}
+        elemento.leido===false && (printStatus="nuevo")
         
         let innButt=document.createElement("button")
         let itemDiv=document.createElement("div")
