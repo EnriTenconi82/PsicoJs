@@ -31,11 +31,13 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
 
     }
 
-    (esLeido) ? texto=" viejo(s)." :texto=" nuevo(s)"
+    (esLeido) ? texto=" viejos" :texto=" nuevos"
     
     if(nombre.length>0||apellido.length>0){texto=` de ${nombre} ${apellido}`}
 
-    showModal(`Se mostraran  mensajes ${texto} para leer.`,"OK","","INFO",()=>{
+    Swal.fire( `Se mostraran  mensajes ${texto} para leer.`, '', 'info')
+
+
         //filtro a array los mensajes que cumplen condicion (busqueda leido)
         
         if (typeof esLeido === 'boolean'){
@@ -48,15 +50,22 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
             }
         
             
-        //leos los mens y confirmo que si tengo de este tipo
+        
+            //leos los mens y confirmo que si tengo de este tipo
         if (mensMonstrados.length>0){
             noMessage=false
             messArtCreator(mensMonstrados)
         }   
+
+        if (noMessage){
+            Swal.fire( `Sin   mensajes ${texto} para leer.`, '', 'info')
+
             
-        noMessage  && showModal(`Sin mostraran  mensajes ${texto} para leer.`,"OK","","INFO")
+        }
+
     
-    })
+
+
 } 
 
 
@@ -69,16 +78,26 @@ function eraseOldFunc(){
 function deleteMens(i){
     let idUnic=document.getElementById(`idSlot${i}`).innerHTML
         
-        showModal("Estas seguro de querer eliminar el mensaje?","SI","CANCELAR","ATENCION!!!",()=>{
 
+    Swal.fire({
+        title: 'Do Estas seguro de querer eliminar el mensaje?',
+        icon:'warning',
+        showDenyButton: true,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        confirmButtonText: 'SI',
+        denyButtonText: `CANCELAR`,
+    }).then((result) => {
+        if (result.isConfirmed) {
             let realId=realIdF(idUnic).findIndex(array => array == idUnic);
             mensajes.splice(realId,1)
             document.getElementById(`readSlot${i}`).innerHTML="REMOVIDO"
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-            
-        })
-
+            Swal.fire('Mensaje eliminado!', '', 'success')
+        } 
     
+        })
+        
     }
 
 
@@ -111,24 +130,36 @@ function eraseMens(arrayIn,esLeido){
   //
     
     
-    if (esLeido) {texto=" viejo(s)."} 
-        else if(!esLeido){texto=" nuevo(s)"} 
+    esLeido ? texto=" viejos" : texto =" nuevos" 
+
     //chequeo si hay mensajes
 
     mensajesElim=arrayIn.filter((mensajeAElim=>mensajeAElim.leido===esLeido))
     mensajesGuardados=arrayIn.filter((mensAGuard=>mensAGuard.leido!=esLeido))
 
-    if (mensajesElim.length===0) {showModal(`Sin   mensajes ${texto} para eliminar.`,"OK","","INFO")}
+    if (mensajesElim.length===0) { Swal.fire(`Sin   mensajes ${texto} para eliminar.`, '', 'info')}
+
     else {
-            if (esLeido) {texto=" viejo(s)."} 
-                else if(!esLeido){texto=" nuevo(s)"} 
-    
-                    showModal(`Se eliminaran mensajes ${texto} `,"OK","CANCELAR","INFO",()=>{
-                    mensajes=mensajesGuardados
-                    //subida
-                    sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-                    showModal(`Mensajes mensajes ${texto} eliminados`,"OK","","INFO")
-                    })
+        
+                    
+                        Swal.fire({
+                            title: `Se eliminaran mensajes ${texto} `,
+                            icon:'warning',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'SI',
+                            denyButtonText: `CANCELAR`,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                mensajes=mensajesGuardados
+                                //subida
+                                sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+                                Swal.fire(`Mensajes ${texto} eliminados`, '', 'success')
+                    
+                                } 
+                        })
+                    
+                    
             
         }
     }       

@@ -37,11 +37,21 @@ privateForm.addEventListener("submit",privateZone)
 
 //funcion salida de zona privada
 function exit(){
-    showModal("Estas seguro de deslogearte?","SI","CANCELAR","ATENCION!!!",()=>{
-                 sessionStorage.setItem('logued',"") //elimino token
-                 location.reload() //reinicio pagina
-            }
-    )
+
+    Swal.fire({
+        title: 'Estas seguro de deslogearte?',
+        showDenyButton: true,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        icon:'warning',
+        confirmButtonText: 'SI',
+        denyButtonText: `CANCELAR`,
+        }).then((result) => {
+        if (result.isConfirmed) {
+            sessionStorage.setItem('logued',"") //elimino token
+            location.reload()
+        } 
+    })
 
 }
 
@@ -146,17 +156,23 @@ function statusChange(i)
     let idChange=document.getElementById(`idSlot${i}`).innerHTML
     if (statusChange=="nuevo") {
         //real id corresponde a index del menaje con. el id de pantalla
-         //si en modal confirmo cambio estado a leido (modal.js)
-        
-        showModal("Estas seguro marcar el mensaje como leido?","SI","CANCELAR","ATENCION!!!",()=>{
 
-            let realId=realIdF(idChange).findIndex(array => array == idChange);
-            mensajes[realId].leido=true
-            document.getElementById(`readSlot${i}`).innerHTML="leido"
-            sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-            
-        })
-
+        Swal.fire({
+            title: 'Estas seguro marcar el mensaje como leido',
+            icon:'question',
+            showDenyButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonText: 'SI',
+            denyButtonText: `CANCELAR`,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                let realId=realIdF(idChange).findIndex(array => array == idChange);
+                mensajes[realId].leido=true
+                document.getElementById(`readSlot${i}`).innerHTML="leido"
+                sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+            } 
+        }) 
     
     }
 }

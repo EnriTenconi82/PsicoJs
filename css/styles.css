@@ -8120,26 +8120,6 @@ form .buttonBlock {
       font-weight: bolder;
       color:red;
     }
-    .modal{
-      font-size: 1.5rem;
-    }
-
-    .modalBtnStyle {
-      margin-top: 1rem;
-      margin-left: 3rem;
-      background-color: #5a487c;
-      text-transform: uppercase;
-      border-radius: 1rem;
-      padding: 0.5rem 1rem 0.5rem 1rem; }
-      
-    
-
-      .modal-footer{
-        border-radius:0 0 2rem 2rem;
-      }
-      .modal-header{  
-        border-radius: 2rem 2rem 0 0;
-      }
 
 .eraseButton{
   vertical-align: middle;
@@ -8165,4 +8145,13 @@ form .buttonBlock {
 .logout:hover{
   font-weight: bolder;
   cursor: pointer;
+}
+
+.swal2-popup{
+  background-color: #78347ef2 !important;
+  color: white !important;
+}
+
+.swal2-styled.swal2-deny, .swal2-styled.swal2-confirm{
+  background-color: #5a487c !important;
 }

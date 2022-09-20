@@ -60,12 +60,14 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         //mail check funcion
         function validarEmail(mail) 
     {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    if  (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
         {
             return (true)
         }
-        showModal(`MAIL INVALIDO!!!`,"OK","","ATENCIÓN!")
-            return (false)
+        
+        else {
+           return (false)
+        }
     } 
 
         function nuevoMensajeClick(e)
@@ -87,6 +89,7 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         if (mensajes.length>0){ id= Math.max.apply(null,mensajes.map(function(men) { return men.id; }))+1;}
 
+        
         if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
             e.preventDefault()
@@ -95,13 +98,22 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             mensajes.push(mensajeAgregado)
             //simulo subida al servidor nuevo mensaje
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-            showModal(`MENSAJE ENVIADO!`,"OK","","ATENCIÓN!",()=>{location.reload();})
-
         
+            Swal.fire({
+                icon:'success',
+                title: 'Mensaje Enviado!',
+                showDenyButton: false,
+                showCancelButton: false,
+                confirmButtonText: 'Ok',
+                allowOutsideClick: false
+            }).then((result) => {
+                result.isConfirmed && location.reload()
+                })
+
         }
         else {
             e.preventDefault()
-            showModal(`Campos Insertados erroneos`,"OK","","ATENCIÓN!")
+            Swal.fire("ATENCIÓN!", "Campos insertados erroneos!", 'error')
         }
         
         
