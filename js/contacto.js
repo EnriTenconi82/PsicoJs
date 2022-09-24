@@ -1,13 +1,9 @@
-console.dir(document)
 
 /*archivos de mensaje campos tomados de pagina web
 simulando mensajes intersatos en pagina
 https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
 
-
-//creo array desde SessionStorage
-let mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
 
 //declaro plantilla mensaje
 
@@ -66,12 +62,16 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         }
         
         else {
-           return (false)
+            return (false)
         }
     } 
 
         function nuevoMensajeClick(e)
-        {
+        {//creo array desde SessionStorage
+
+        let mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
+            console.log(mensajes)
+        
         
             //ingreso y checkeo datos
         nombre=document.getElementById("nombre").value.toUpperCase()
@@ -84,7 +84,12 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         mens=document.getElementById("mensaje").value.toUpperCase()
         leido=false;
         let fecha=new Date()
-        fecha=fecha.toLocaleDateString() 
+
+        let dia = `${(fecha.getDate())}`.padStart(2,'0');
+        let mes = `${(fecha.getMonth()+1)}`.padStart(2,'0');
+        let anio = fecha.getFullYear();
+        fecha=dia + '/' + mes + '/' + anio
+        
         let id=0 
 
         if (mensajes.length>0){ id= Math.max.apply(null,mensajes.map(function(men) { return men.id; }))+1;}
@@ -98,6 +103,9 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             mensajes.push(mensajeAgregado)
             //simulo subida al servidor nuevo mensaje
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+
+
+
         
             Swal.fire({
                 icon:'success',

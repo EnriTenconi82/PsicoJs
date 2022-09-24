@@ -1,11 +1,17 @@
 
 //simulacion servidor
-!sessionStorage['SimularServMensajes'] && sessionStorage.setItem('SimularServMensajes',`[{"nombre":"TITO","apellido":"TITOVICH","celular":"341234566","mail":"TITO@HOTMAIL.COM","obrasocial":"OTRO","consulta":"PRESENCIAL","modResp":"VIRTUAL","mens":"hola quisiera comunicarme para un turno gracias.","leido":false,"fecha":"31/08/2022","id":6},{"nombre":"ROMINA","apellido":"CABELLO","celular":"341234566","mail":"ROOO_CABE@AOL.COM","obrasocial":"GALENO","consulta":"VIRTUAL","modResp":"MAIL","mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.","leido":true,"fecha":"31/08/2022","id":4},{"nombre":"TANO","apellido":"ORTIZ","celular":"341234566","mail":"TANO@AOL.COM","obrasocial":"GALENO","consulta":"VIRTUAL","modResp":"MAIL","mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.","leido":false,"fecha":"31/08/2022","id":2},{"nombre":"ROBERTO","apellido":"DIEGUEZ","celular":"34123226","mail":"TANO@AOL.COM","obrasocial":"GALENO","consulta":"VIRTUAL","modResp":"MAIL","mens":"hola me llamo Romi quisiera comunicarme para un turno gracias.","leido":true,"fecha":"01/09/2022","id":3}]`)
+
+async function getJson() {
+    const response = await fetch("../data/mess.json")
+	const dato = await response.json();
+    !sessionStorage['SimularServMensajes'] && sessionStorage.setItem('SimularServMensajes',JSON.stringify(dato))
+    //si ya he estado trabajando en la pagina mantengo los cambio del almacenamiento de Session
+}
+
+getJson() // tomo valor de archivo js y guardo en storage para trabajar si recien entre a la app
 
 
-//simulador usuario -- 
-
-!sessionStorage['SimularServUser'] &&  sessionStorage.setItem('SimularServUser',`{"user":"nemuadmin","pass":"nemuuser","adToken":"1234"}`)
+//simulador de session
 
 !sessionStorage['logued'] && sessionStorage.setItem('logued',``)
 

@@ -1,21 +1,32 @@
+//
+
+async function getuser() {
+    const response = await fetch("../data/user.json")
+	const usPass = await response.json();
+    sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
+    privateZone()
+}
+
+
 // si el token (logued) es igual al token del usuario registrado muestro privado
 //usuario y matriz creado en sessionStor.js (simulacion servidor)
+sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued") && divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
 
-JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued") && divCreator()    //SI ESTOY LOGUEADO CREO BOTONERA PRIVADA
-
-
-//user y password de zona privada
-let user=JSON.parse(sessionStorage.getItem("SimularServUser")).user
-let password=JSON.parse(sessionStorage.getItem("SimularServUser")).pass
 
 
 
 //funcion BOTON INGRESO A CHECK ZONA PRIVADA
 
-function privateZone(e){
-    e.preventDefault
+function privateZone(){
+  //  e.preventDefault
     let inpUser=document.getElementById("user").value
     let inpPass=document.getElementById("passw").value
+
+    //user y password de zona privada
+    let user=JSON.parse(sessionStorage.getItem("SimularServUser")).user
+    let password=JSON.parse(sessionStorage.getItem("SimularServUser")).pass
+
+
 
     if (inpUser.length>0 && inpPass.length>0)
         {if (inpUser===user && inpPass===password ){
@@ -31,7 +42,7 @@ function privateZone(e){
 ///definicion eventos de botones ya visibles u creado
 if (document.getElementById("privateForm")){
 let privateForm=document.getElementById("privateForm")
-privateForm.addEventListener("submit",privateZone)
+privateForm.addEventListener("submit",getuser)
 }
 
 
@@ -48,7 +59,8 @@ function exit(){
         denyButtonText: `CANCELAR`,
         }).then((result) => {
         if (result.isConfirmed) {
-            sessionStorage.setItem('logued',"") //elimino token
+            sessionStorage.removeItem('logued',"") //elimino token
+            sessionStorage.removeItem('SimularServUser',"")
             location.reload()
         } 
     })
