@@ -44,10 +44,10 @@ function startIdleTimer() {
 
     /* AUMENTO SEGUNDOS */
     currSeconds++;
-    console.log(currSeconds)
+
     // al minuto deslogueo x inactividad
     if (currSeconds===60 && sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued")){
-        Swal.fire(`Deslogueo por inactividad`, '', 'success').then(()=>{
+        Swal.fire(`Deslogueo por inactividad`, '', 'info').then(()=>{
             sessionStorage.removeItem('logued',"") //elimino token
             sessionStorage.removeItem('SimularServUser',"")
             location.reload()
