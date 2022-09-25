@@ -1,5 +1,6 @@
 //
 
+
 async function getuser() {
     const response = await fetch("../data/user.json")
 	const usPass = await response.json();
@@ -14,6 +15,45 @@ sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularSe
 
 
 
+//
+//deslogueo por inactividad
+
+let timer, currSeconds = 0;
+
+function resetTimer() {
+
+    /* detengo timer */
+    clearInterval(timer);
+
+    /* resect de segundos*/
+    currSeconds = 0;
+
+    /* seteo nuevo timer */
+    timer =  setInterval(startIdleTimer, 1000);
+}
+
+// definicion eventos que resectan timer inactividad
+window.onload = resetTimer;
+window.onmousemove = resetTimer;
+window.onmousedown = resetTimer;
+window.ontouchstart = resetTimer;
+window.onclick = resetTimer;
+window.onkeypress = resetTimer;
+
+function startIdleTimer() {
+
+    /* AUMENTO SEGUNDOS */
+    currSeconds++;
+    console.log(currSeconds)
+    // al minuto deslogueo x inactividad
+    if (currSeconds===60 && sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued")){
+        Swal.fire(`Deslogueo por inactividad`, '', 'success').then(()=>{
+            sessionStorage.removeItem('logued',"") //elimino token
+            sessionStorage.removeItem('SimularServUser',"")
+            location.reload()
+            }) }    
+
+}
 
 //funcion BOTON INGRESO A CHECK ZONA PRIVADA
 
