@@ -74,7 +74,7 @@ function privateZone(){
             sessionStorage.setItem('logued',logToken) //guardo token a usuario correspondiente en mi memoria
             divCreator()   
         }
-        else alert("Combinacion user password errada")
+        else Swal.fire(`Combinación User Password incorrecta`, '', 'info')
     }
 }
 
