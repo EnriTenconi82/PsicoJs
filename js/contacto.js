@@ -7,6 +7,7 @@ https://enritenconi82.github.io/PsicologosOnLineFinal/
 
 //declaro plantilla mensaje
 
+
 class nuevoMensaje{
     constructor(nombre,
                 apellido,
@@ -103,10 +104,6 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
             mensajes.push(mensajeAgregado)
             //simulo subida al servidor nuevo mensaje
             sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-
-
-
-        
             Swal.fire({
                 icon:'success',
                 title: 'Mensaje Enviado!',

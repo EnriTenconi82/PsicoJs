@@ -1,6 +1,8 @@
 //
 
 
+let mensajes=[]
+
 async function getuser() {
     const response = await fetch("../data/user.json")
 	const usPass = await response.json();
@@ -73,6 +75,10 @@ function privateZone(){
             let logToken=JSON.parse(sessionStorage.getItem("SimularServUser")).adToken
             sessionStorage.setItem('logued',logToken) //guardo token a usuario correspondiente en mi memoria
             divCreator()   
+            
+        //creo array desde SessionStorage
+    mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
+
         }
         else Swal.fire(`Combinación User Password incorrecta`, '', 'info')
     }

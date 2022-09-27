@@ -12,10 +12,6 @@ https://enritenconi82.github.io/PsicologosOnLineFinal/
 
 
 
-//creo array desde SessionStorage
-
-let mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
-
 
 //funcion de lectura (//false=muestrame nuevos (no leidos) true =muestrame leidos)
 function showMessages(arrayIn,esLeido,apellido,nombre){ 
