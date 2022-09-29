@@ -5,6 +5,8 @@ https://enritenconi82.github.io/PsicologosOnLineFinal/
 */
 
 
+
+
 //declaro plantilla mensaje
 
 
@@ -39,42 +41,67 @@ let miForm=document.getElementById("formContacto")
 miForm.addEventListener ("submit", nuevoMensajeClick);
     
 
+//tomo color de texto de campo (color de default OK) 
+let element = document.getElementById('nombre');
+let elementStyle = window.getComputedStyle(element);
+let elementColor = elementStyle.getPropertyValue('color');
+!sessionStorage['textColor'] && sessionStorage.setItem('textColor',elementColor)
 
-//control valor numerico u texto de prompt
-/* segun si el valor ingresado es como corresponde  (texto o numero) deja seguir el prompt o no
+/*VALIDACION segun si el valor ingresado es como corresponde  (texto o numero) deja seguir el prompt o no
 en futura pagina web se requeriran todos los datos y valores de obra social 0 1 2 etc ya veran desde la pagina
 */ 
-function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=texto)
+function mensFieldsInput(dato,esnumero,id )//insertar valor (true=number,false=texto)
     {
         let validator=false
-        
-            if(dato.length>0&&isNaN(dato)&&esnumero==false) {validator=true}
+         //SI VALOR NO ES VALIDO SE MARCA EN ROJO, SI ES VALIDO VUELVE A COLOR DE DEFAULT
+            if(dato.length>0&&isNaN(dato)&&esnumero==false) {
+                validator=true
+                
+                document.getElementById(id).style.color= sessionStorage.getItem('textColor')
+            }
                 else if(dato.length>0&&!isNaN(dato)&&esnumero==true) {validator=true}
             
+            if (validator===false)  document.getElementById(id).style.color= "red"
             return validator;
     }
-//funcion para creacion de nuevos mensajes (boton)
-        //mail check funcion
+
+    //mail check funcion
         function validarEmail(mail) 
     {
+        
     if  (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
         {
+            document.getElementById("mail").style.color=sessionStorage.getItem('textColor')
             return (true)
         }
         
         else {
+            document.getElementById("mail").style.color= "red"
             return (false)
         }
     } 
 
-        function nuevoMensajeClick(e)
-        {//creo array desde SessionStorage
+    //VALIDO LOS VARIOS CAMPOS Y DEVUELVO FALSE SI HAY POR LO MENOS UNO MAL
+    function validar(){
+        let checkOk=true
+        if(!validarEmail(mail))  checkOk=false
+        if(!mensFieldsInput(nombre,false,"nombre"))  checkOk=false
+        if(!mensFieldsInput(apellido,false,"apellido"))checkOk=false
+        if(!mensFieldsInput(celular,true,"celular")) checkOk=false
+        if(!mensFieldsInput(obrasocial,false,"obrasocial"))  checkOk=false
+        if(!mensFieldsInput(modResp,false,"modalidadrespuesta")) checkOk=false
+        if(!mensFieldsInput(mens,false,"mensaje")) checkOk=false
+        return checkOk
+    }
+
+    function nuevoMensajeClick(e)
+    {//creo array desde SessionStorage
 
         let mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
             console.log(mensajes)
         
         
-            //ingreso y checkeo datos
+    //ingreso y checkeo datos
         nombre=document.getElementById("nombre").value.toUpperCase()
         apellido=document.getElementById("apellido").value.toUpperCase()
         celular=document.getElementById("celular").value
@@ -84,8 +111,8 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         consulta=document.querySelector('input[name=consulta]:checked').value.toUpperCase()
         mens=document.getElementById("mensaje").value.toUpperCase()
         leido=false;
+    //FECHA RECEPCION MENSAJE
         let fecha=new Date()
-
         let dia = `${(fecha.getDate())}`.padStart(2,'0');
         let mes = `${(fecha.getMonth()+1)}`.padStart(2,'0');
         let anio = fecha.getFullYear();
@@ -95,8 +122,9 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
 
         if (mensajes.length>0){ id= Math.max.apply(null,mensajes.map(function(men) { return men.id; }))+1;}
 
-        
-        if(validarEmail(mail)&& mensFieldsInput(nombre,false)&&mensFieldsInput(apellido,false)&&mensFieldsInput(celular,true)&&mensFieldsInput(mail,false)&&mensFieldsInput(obrasocial,false)&&mensFieldsInput(modResp,false)&&mensFieldsInput(consulta,false)&&mensFieldsInput(mens,false)){
+        const checked=validar() //VALIDO MENSAJES
+
+        if(checked){ 
             const mensajeAgregado=new nuevoMensaje(nombre,apellido,celular,mail,obrasocial,consulta,modResp,mens,leido,fecha,id)
             e.preventDefault()
 
@@ -118,7 +146,7 @@ function mensFieldsInput(dato,esnumero )//insertar valor (true=number,false=text
         }
         else {
             e.preventDefault()
-            Swal.fire("ATENCIÓN!", "Campos insertados erroneos!", 'error')
+            Swal.fire("ATENCIÓN!", "Verificar campos erroneos!", 'error')
         }
         
         

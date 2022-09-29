@@ -1,18 +1,6 @@
 //JS FUNCIONES DE LECTURA
 
 
-
-
-/*archivos de mensaje campos tomados de pagina web
-simulando mensajes intersatos en pagina
-https://enritenconi82.github.io/PsicologosOnLineFinal/
-*/
-
-
-
-
-
-
 //funcion de lectura (//false=muestrame nuevos (no leidos) true =muestrame leidos)
 function showMessages(arrayIn,esLeido,apellido,nombre){ 
 
@@ -50,7 +38,7 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
             //leos los mens y confirmo que si tengo de este tipo
         if (mensMonstrados.length>0){
             noMessage=false
-            messArtCreator(mensMonstrados)
+            messArtCreator(mensMonstrados) //CREACION CAROUSEL (carouselCreate.js)
         }   
 
         if (noMessage){
@@ -67,14 +55,10 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
 
 //borrado
 
-function eraseOldFunc(){
-    eraseMens(mensajes,true)
-}
-
 function deleteMens(i){
     let idUnic=document.getElementById(`idSlot${i}`).innerHTML
         
-
+    if (( document.getElementById(`readSlot${i}`).innerHTML!="REMOVIDO")){
     Swal.fire({
         title: 'Do Estas seguro de querer eliminar el mensaje?',
         icon:'warning',
@@ -83,19 +67,21 @@ function deleteMens(i){
         allowOutsideClick: false,
         confirmButtonText: 'SI',
         denyButtonText: `CANCELAR`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            let realId=realIdF(idUnic).findIndex(array => array == idUnic);
-            mensajes.splice(realId,1)
-            document.getElementById(`readSlot${i}`).innerHTML="REMOVIDO"
-            sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-            Swal.fire('Mensaje eliminado!', '', 'success')
-        } 
-    
-        })
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let realId=realIdF(idUnic).findIndex(array => array == idUnic);
+                mensajes.splice(realId,1)
+                document.getElementById(`readSlot${i}`).innerHTML="REMOVIDO"
+                sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+                Swal.fire('Mensaje eliminado!', '', 'success')
+            } 
         
+            })
+            
+    }else if  (( document.getElementById(`readSlot${i}`).innerHTML==="REMOVIDO")){
+        Swal.fire(`El mensaje ha sido removido previamente`, '', 'error')
     }
-
+}
 
 
 //mapeo mensajes a id
@@ -106,10 +92,14 @@ function realIdF(id)
 }
 
 
+function eraseOldFunc(){
+    eraseMens(mensajes,true)
+}
+
+
 //FUNCION ELIMINACION MENSAJES (parametro variales uso futuro)
 
 function eraseMens(arrayIn,esLeido){ 
-
 
     let mensajesGuardados=[]
     let mensajesElim=[]
@@ -119,10 +109,9 @@ function eraseMens(arrayIn,esLeido){
     
     //ELIMINO ARTICLE DE MENSAJE MOSTRADOS SI EXISTE
     if (document.getElementById("articleCar"))
-    {   let padre = document.getElementById("articleCar").parentNode;
-		padre.removeChild(document.getElementById("articleCar"));
-
-    }
+        {let padre = document.getElementById("articleCar").parentNode;
+         padre.removeChild(document.getElementById("articleCar"));
+        }
   //
     
     

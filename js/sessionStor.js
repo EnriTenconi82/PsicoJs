@@ -1,5 +1,5 @@
 
-//simulacion servidor
+//carga datos desde .json
 
 async function getJson() {
     const response = await fetch("../data/mess.json")
@@ -11,7 +11,11 @@ async function getJson() {
 getJson() // tomo valor de archivo js y guardo en storage para trabajar si recien entre a la app
 
 
-//simulador de session
+//creo item en sessionStorage que contendra token de session
 
 !sessionStorage['logued'] && sessionStorage.setItem('logued',``)
+
+
+
+
 

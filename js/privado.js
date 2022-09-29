@@ -1,15 +1,5 @@
-//
-
-
+//JS conteniente crecion de article de zona privada y botonoera
 let mensajes=[]
-
-async function getuser() {
-    const response = await fetch("../data/user.json")
-	const usPass = await response.json();
-    sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
-    privateZone()
-}
-
 
 // si el token (logued) es igual al token del usuario registrado muestro privado
 //usuario y matriz creado en sessionStor.js (simulacion servidor)
@@ -17,50 +7,28 @@ sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularSe
 
 
 
-//
+
+//funcior para tomar datos de usurario admin desde json
+function getuser() {
+    
+    fetch('../data/user.json')
+    .then(response => response.json())
+    .then(usPass => {sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
+    sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
+    privateZone()}  //funcion check usurario
+    );
+}
+
+
+
+
+
+
 //deslogueo por inactividad
-
-let timer, currSeconds = 0;
-
-function resetTimer() {
-
-    /* detengo timer */
-    clearInterval(timer);
-
-    /* resect de segundos*/
-    currSeconds = 0;
-
-    /* seteo nuevo timer */
-    timer =  setInterval(startIdleTimer, 1000);
-}
-
-// definicion eventos que resectan timer inactividad
-window.onload = resetTimer;
-window.onmousemove = resetTimer;
-window.onmousedown = resetTimer;
-window.ontouchstart = resetTimer;
-window.onclick = resetTimer;
-window.onkeypress = resetTimer;
-
-function startIdleTimer() {
-
-    /* AUMENTO SEGUNDOS */
-    currSeconds++;
-
-    // al minuto deslogueo x inactividad
-    if (currSeconds===60 && sessionStorage['SimularServUser']&& JSON.parse(sessionStorage.getItem("SimularServUser")).adToken===sessionStorage.getItem("logued")){
-        Swal.fire(`Deslogueo por inactividad`, '', 'info').then(()=>{
-            sessionStorage.removeItem('logued',"") //elimino token
-            sessionStorage.removeItem('SimularServUser',"")
-            location.reload()
-            }) }    
-
-}
 
 //funcion BOTON INGRESO A CHECK ZONA PRIVADA
 
 function privateZone(){
-  //  e.preventDefault
     let inpUser=document.getElementById("user").value
     let inpPass=document.getElementById("passw").value
 
@@ -74,11 +42,8 @@ function privateZone(){
         {if (inpUser===user && inpPass===password ){
             let logToken=JSON.parse(sessionStorage.getItem("SimularServUser")).adToken
             sessionStorage.setItem('logued',logToken) //guardo token a usuario correspondiente en mi memoria
-            divCreator()   
-            
-        //creo array desde SessionStorage
-    mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
-
+            divCreator()   //creo div de zona privada    
+        
         }
         else Swal.fire(`Combinación User Password incorrecta`, '', 'info')
     }
@@ -105,10 +70,8 @@ function exit(){
         denyButtonText: `CANCELAR`,
         }).then((result) => {
         if (result.isConfirmed) {
-            sessionStorage.removeItem('logued',"") //elimino token
-            sessionStorage.removeItem('SimularServUser',"")
-            location.reload()
-        } 
+            removeUserToken()
+            } 
     })
 
 }
@@ -118,6 +81,9 @@ function exit(){
 //funcion CREADORA DIV DE BOTONERA DE LECTURA
 
 function divCreator(){
+    //creo array desde SessionStorage
+    mensajes= JSON.parse(sessionStorage.getItem('SimularServMensajes'))
+
     //modifico mi div donde se encuentra el login  creando ahi mismo la botonera
     let logDiv=document.getElementById("logging")
     logDiv.innerHTML=`<form onsubmit="return false">
@@ -162,7 +128,7 @@ function divCreator(){
         
         </form>`
 
-//botones creados defino funcionalidades
+//a los botones creados defino funcionalidades
     let findSurname=document.getElementById("findSurname")
     let findNew=document.getElementById("findNew")
     let findOld=document.getElementById("findOld")
@@ -190,7 +156,7 @@ function muestraMensApellidoNombre(){
 
 }
 
-//funcion BOTON LECTURA MENSAJES VIEJOS
+//funcion BOTON LECTURA MENSAJES VIEJOS ()
 function muestraMensViejos(){
     
     showMessages(mensajes,true,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
