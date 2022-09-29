@@ -12,7 +12,6 @@ function getuser() {
     return response.json();
   }).then(function (usPass) {
     sessionStorage.setItem('SimularServUser', JSON.stringify(usPass));
-    sessionStorage.setItem('SimularServUser', JSON.stringify(usPass));
     privateZone();
   } //funcion check usurario
   );

@@ -14,8 +14,7 @@ function getuser() {
     fetch('../data/user.json')
     .then(response => response.json())
     .then(usPass => {sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
-    sessionStorage.setItem('SimularServUser',JSON.stringify(usPass))
-    privateZone()}  //funcion check usurario
+                     privateZone()}  //funcion check usurario
     );
 }
 
@@ -52,8 +51,8 @@ function privateZone(){
 
 ///definicion eventos de botones ya visibles u creado
 if (document.getElementById("privateForm")){
-let privateForm=document.getElementById("privateForm")
-privateForm.addEventListener("submit",getuser)
+    let privateForm=document.getElementById("privateForm")
+    privateForm.addEventListener("submit",getuser)
 }
 
 
@@ -146,21 +145,15 @@ function divCreator(){
 function muestraMensApellidoNombre(){
     let apellidoIn=document.getElementById("apellido").value.toUpperCase()
     apellidoIn=apellidoIn.toUpperCase()
-    
     let nombreIn=document.getElementById("nombre").value.toUpperCase()
-    
-    
     nombreIn.length>0 && nombreIn.toUpperCase()
-    
-    apellidoIn.length>0 && showMessages(mensajes,"",apellidoIn,nombreIn); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
+        apellidoIn.length>0 && showMessages(mensajes,"",apellidoIn,nombreIn); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
 
 }
 
 //funcion BOTON LECTURA MENSAJES VIEJOS ()
 function muestraMensViejos(){
-    
     showMessages(mensajes,true,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
-
 }
 
 //funcion BOTON LECTURA MENSAJES NUEVOS
@@ -168,7 +161,6 @@ function muestraMensNuevos(){
     let temp;
     let validator=false;
     showMessages(mensajes,false,"",""); //llamada a funcion de lectura (y tomo las posiciones en array de los no leidos)
-
 }
 
 //FUNCION BOTON CAMBIO DE ESTADO NUEVO--->LEIDO 
@@ -180,7 +172,6 @@ function statusChange(i)
     let idChange=document.getElementById(`idSlot${i}`).innerHTML
     if (statusChange=="nuevo") {
         //real id corresponde a index del menaje con. el id de pantalla
-
         Swal.fire({
             title: 'Estas seguro marcar el mensaje como leido',
             icon:'question',

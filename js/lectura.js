@@ -43,13 +43,7 @@ function showMessages(arrayIn,esLeido,apellido,nombre){
 
         if (noMessage){
             Swal.fire( `Sin   mensajes ${texto} para leer.`, '', 'info')
-
-            
         }
-
-    
-
-
 } 
 
 
@@ -75,8 +69,7 @@ function deleteMens(i){
                 sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
                 Swal.fire('Mensaje eliminado!', '', 'success')
             } 
-        
-            })
+        })
             
     }else if  (( document.getElementById(`readSlot${i}`).innerHTML==="REMOVIDO")){
         Swal.fire(`El mensaje ha sido removido previamente`, '', 'error')
@@ -109,8 +102,8 @@ function eraseMens(arrayIn,esLeido){
     
     //ELIMINO ARTICLE DE MENSAJE MOSTRADOS SI EXISTE
     if (document.getElementById("articleCar"))
-        {let padre = document.getElementById("articleCar").parentNode;
-         padre.removeChild(document.getElementById("articleCar"));
+        {   let padre = document.getElementById("articleCar").parentNode;
+            padre.removeChild(document.getElementById("articleCar"));
         }
   //
     
@@ -125,26 +118,20 @@ function eraseMens(arrayIn,esLeido){
     if (mensajesElim.length===0) { Swal.fire(`Sin   mensajes ${texto} para eliminar.`, '', 'info')}
 
     else {
-        
-                    
-                        Swal.fire({
-                            title: `Se eliminaran mensajes ${texto} `,
-                            icon:'warning',
-                            showDenyButton: true,
-                            showCancelButton: false,
-                            confirmButtonText: 'SI',
-                            denyButtonText: `CANCELAR`,
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                mensajes=mensajesGuardados
-                                //subida
-                                sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
-                                Swal.fire(`Mensajes ${texto} eliminados`, '', 'success')
-                    
-                                } 
+        Swal.fire({
+                    title: `Se eliminaran mensajes ${texto} `,
+                    icon:'warning',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'SI',
+                    denyButtonText: `CANCELAR`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            mensajes=mensajesGuardados
+                            //subida
+                            sessionStorage.setItem("SimularServMensajes",JSON.stringify(mensajes)) 
+                            Swal.fire(`Mensajes ${texto} eliminados`, '', 'success')
+                            } 
                         })
-                    
-                    
-            
-        }
+            }
     }       
